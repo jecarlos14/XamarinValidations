@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application x:Class="XamarinValidatios.App"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="MainColor">#4a4a4a</Color>
+
+            <Style x:Key="StyTitleLabelAndroid" TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="#4a4a4a" />
+                <Setter Property="FontAttributes" Value="Italic,Bold" />
+            </Style>
+            <Style x:Key="StyTitleLabelIOs" TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="#4a4a4a" />
+                <Setter Property="FontAttributes" Value="Italic,Bold" />
+            </Style>
+            <Style x:Key="StyTitleLabel" TargetType="Label">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double"
+                                    Android="16"
+                                    iOS="20" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource MainColor}" />
+                <Setter Property="FontAttributes" Value="Italic,Bold" />
+            </Style>
+            <Style x:Key="StyBotonOK" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Blue" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+
+            <ControlTemplate x:Key="TemplateBase">
+                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <ContentPresenter Padding="10"
+                                          BackgroundColor="White"
+                                          HorizontalOptions="FillAndExpand"
+                                          VerticalOptions="FillAndExpand" />
+
+                        <Label Style="{StaticResource StyTitleLabel}" Text="Kolbi" />
+                    </StackLayout>
+                </ScrollView>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

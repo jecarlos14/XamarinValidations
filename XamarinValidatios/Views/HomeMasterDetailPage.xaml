@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage x:Class="XamarinValidatios.Views.HomeMasterDetailPage"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  mc:Ignorable="d">
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="Maestro">
+            <ScrollView>
+                <Label Text="Maestro" />
+            </ScrollView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <ContentPage Title="Detalle1">
+            <ScrollView>
+                <Label Text="Detalle 1" />
+            </ScrollView>
+        </ContentPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

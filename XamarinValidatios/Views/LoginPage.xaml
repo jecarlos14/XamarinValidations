@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="XamarinValidatios.Views.LoginPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:validations="clr-namespace:XamarinValidatios.Validations">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <validations:IsValidEmailConverter x:Key="IsValidEmailConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Frame>
+            <StackLayout>
+                <StackLayout.Behaviors>
+                    <validations:ValidationGroupBehavior x:Name="form" />
+                </StackLayout.Behaviors>
+
+                <Label Text="Username" TextColor="{Binding Source={x:Reference EmailChangeValidator}, Path=ColorValidation}">
+                    <Label.Style>
+                        <OnPlatform x:TypeArguments="Style"
+                                    Android="{StaticResource StyTitleLabelAndroid}"
+                                    iOS="{StaticResource StyTitleLabelIOs}" />
+                    </Label.Style>
+                </Label>
+                <Entry Text="{Binding Username}" TextColor="{Binding Source={x:Reference EmailChangeValidator}, Path=ColorValidation}">
+                    <Entry.Behaviors>
+                        <validations:EmailChangeBehavior x:Name="EmailChangeValidator" />
+                        <validations:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                            <validations:ValidationBehavior.Validators>
+                                <validations:RequiredValidator />
+                            </validations:ValidationBehavior.Validators>
+                        </validations:ValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+                <Label Style="{StaticResource StyTitleLabel}" Text="Password" />
+                <Entry IsPassword="True" Text="{Binding Password}">
+                    <Entry.Behaviors>
+                        <validations:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                            <validations:ValidationBehavior.Validators>
+                                <validations:RequiredValidator />
+                            </validations:ValidationBehavior.Validators>
+                        </validations:ValidationBehavior>
+                    </Entry.Behaviors>
+                </Entry>
+
+                <Button Command="{Binding LogInCommand}"
+                        IsEnabled="{Binding Username, Converter={StaticResource IsValidEmailConverter}}"
+                        Style="{StaticResource StyBotonOK}"
+                        Text="Login" />
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>
